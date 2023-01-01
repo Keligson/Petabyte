@@ -1,0 +1,15 @@
+.hunger-bar {
+    width: 200px;
+    height: 20px;
+    background-color: green;
+    border: 10px;
+
+    max-width: 100%;
+    border-style: solid;
+    border-color: black;
+  }
+
+#dynamicImage {
+  width: 300px;
+  height: 300px;
+}

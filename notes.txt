@@ -1,0 +1,59 @@
+hunger = 0
+thirst = 0
+cleanliness = 100
+happiness = 100
+health = 100
+
+
+
+feed
+    pro:
+        hunger -
+        happiness +
+        health +
+    con:
+        thirst +
+        clean -
+
+
+drink
+    pro:
+        thirst -
+        happiness +
+        health +      
+    con:
+        clean - (only small -)
+
+
+clean
+    pro:
+        clean +
+        happiness +
+        health +
+    con:
+        no con?
+    
+play
+    pro:
+        happiness +
+        health +
+    con:
+        clean -
+        thirst +
+        hunger +
+
+
+
+
+
+statsTick (cost of living)
+    hunger +0.5
+    thirst +0.5
+    happiness -0.5
+    cleanliness -0.5
+    
+1000ms on statsTick
+pet will die after roughly 2 mins alone
+
+health
+start pet at 50% everything BUT health?
