@@ -8,6 +8,7 @@ const submitPetNameButton = document.getElementById("submitPetNameButton")
 const petsName = document.getElementById("petsName")
 
 //----------------PET LEVEL DISPLAY TEXTS----------------
+
 const hungerLevelDisplayText = document.getElementById("hungerLevelDisplayText")
 const thirstLevelDisplayText = document.getElementById("thirstLevelDisplayText")
 const cleanlinessLevelDisplayText = document.getElementById("cleanlinessLevelDisplayText")
@@ -53,6 +54,7 @@ beginButton.addEventListener('mouseout', function() {
   beginButton.src = `./Images/beginbutton.png`
 })
 
+
 beginButton.addEventListener(`click`, () => {
   console.log(`This begins the game`)
 })
@@ -81,6 +83,7 @@ const progressBar = document.getElementById("progressBar")
 
 
 //----------------PET HEALTH LEVEL DISPLAY TEXT----------------
+
 const healthLevelDisplayText = document.getElementById("healthLevelDisplayText")
 
 
@@ -93,9 +96,9 @@ const healthLevelDisplayText = document.getElementById("healthLevelDisplayText")
 
 
 //------------------------CLASS REMOVAL--------------------------
-// let gameOverRemovableElements = document.querySelectorAll(".gameOverRemovable")
+let gameOverRemovableElements = document.querySelectorAll(".gameOverRemovable")
 
-// let petChosenRemovableElements = document.querySelectorAll(".petChosenRemovableElements")
+let petChosenRemovableElements = document.querySelectorAll(".petChosenRemovableElements")
 
 
 
@@ -253,11 +256,29 @@ class CorePet {
 
 
 //---------------------CURRENT PET-------------------------
+
 let currentPet
 
 
 
-//------------------HEALTH DEGRADATION---------------------
+//---------------------HEALTH STUFF------------------------
+//BACKUP
+// function healthFucntion() {
+//   if (currentPet == `Monkey`) {
+//     if (myMonkey.hunger > 49 || myMonkey.thirst > 49) {
+//       myMonkey.health -= 1
+//       console.log(`Monkey Deg log: HP = ${myMonkey.health}`)
+//     }
+//     else if (myMonkey.health < 100 && myMonkey.hunger < 49) {
+//       myMonkey.health += 1
+//       console.log(`Monkey Deg log: HP = ${myMonkey.health}`)
+//     }
+//   }
+// }
+//BACKUP
+
+
+
 function healthDegFunction() {
   if (currentPet == `Monkey`) {
     if (myMonkey.hunger > 49) {
@@ -289,12 +310,51 @@ function healthDegFunction() {
   }
 }
 
+// function healthThirstFunction() {
+//   if (currentPet == `Monkey`) {
+//     if (myMonkey.thirst > 49) {
+//       myMonkey.health -= 1
+//     }
+//     else if (myMonkey.health < 100 && myMonkey.thirst < 49) {
+//       myMonkey.health += 1
+//     }
+//   }
+// }
+
+// function healthCleanlinessFunction() {
+//   if (currentPet == `Monkey`) {
+//     if (myMonkey.cleanliness > 49) {
+//       myMonkey.health -= 1
+//     }
+//     else if (myMonkey.health < 100 && myMonkey.cleanliness < 49) {
+//       myMonkey.health += 1
+//     }
+//   }
+// }
+
+// function healthHappinessFunction() {
+//   if (currentPet == `Monkey`) {
+//     if (myMonkey.happiness > 49) {
+//       myMonkey.health -= 1
+//       console.log(`Monkey Deg log: HP = ${myMonkey.health}`)
+//     }
+//     else if (myMonkey.health < 100 && myMonkey.hunger < 49) {
+//       myMonkey.health += 1
+//       console.log(`Monkey Deg log: HP = ${myMonkey.health}`)
+//     }
+//   }
+// }
+
+
+
 
 
 //--------------------DEATH FUNCTION------------------------
+
 function deathCheck() {
   if (currentPet == `Monkey`) {
     if (myMonkey.health <= 0) {
+
 
       clearInterval(timerId)
       console.log(`Monkey Death log: HP = ${myMonkey.health}. ${myMonkey.name} DIED!`)
@@ -311,6 +371,7 @@ function deathCheck() {
 
 
 //------------------ELEMENT REMOVERS-----------------------
+
 function removeElementsIfPetDead() {
   for (let i = 0; i < gameOverRemovableElements.length; i++) {
       gameOverRemovableElements[i].remove();
@@ -344,6 +405,7 @@ class MonkeyClass extends CorePet {
 
 
 //---------------------RABBIT EXTEND-----------------------
+
 class RabbitClass extends CorePet {
   constructor(name, hunger, thirst, cleanliness, happiness, health, type, dance) {
       super(name, hunger, thirst, cleanliness, happiness, health, type)
@@ -359,6 +421,7 @@ class RabbitClass extends CorePet {
 
 
 //---------------RABBIT BUTTON (CREATES RABBIT)---------------
+
 rabbitButton.addEventListener(`click`, () => {
   myRabbit = new RabbitClass(`${petsName.textContent}`, 0, 0, 100, 100, 100, `Rabbit`, `PEPEJAM`)
   console.log(myRabbit)
@@ -368,6 +431,7 @@ rabbitButton.addEventListener(`click`, () => {
 
 
 //----------------------PET NAME SYSTEM------------------------
+
 submitPetNameButton.addEventListener("click", () =>{
   petsName.textContent = inputPetNameBox.value;
   submitPetNameButton.remove()
@@ -377,6 +441,7 @@ submitPetNameButton.addEventListener("click", () =>{
 
 
 //---------------MONKEY BUTTON (CREATES MONKEY)---------------
+
 monkeyButton.addEventListener(`click`, () => {
     myMonkey = new MonkeyClass(`${petsName.textContent}`, 0, 0, 100, 100, 100, `Monkey`, `PEPEJAM`)
     console.log(myMonkey)
@@ -386,6 +451,7 @@ monkeyButton.addEventListener(`click`, () => {
 
 
 //-------------------PAUSE/PLAY CODE------------------
+
 let timerId
 let isPaused = false
 
@@ -445,6 +511,7 @@ playPauseTimerButton.addEventListener("click", () => {
 
 
 //-------------------FEED BUTTON------------------
+
 feedButton.addEventListener(`click`, () => {
   //MONKEY
   if (currentPet == `Monkey`) {
@@ -613,6 +680,122 @@ playButton.addEventListener(`click`, () => {
 
 
 
+
+
+
+
+
+
+
+
+
+// OLD SWITCH CASES FOR EXAMPLE USE
+        // switch(myMonkey.hunger){
+        //     case 0:
+        //     petsName.textContent = `Oh No! ${petsName.textContent} has died from being overfed! GAME OVER`
+        //     break
+        //     case 15:
+        //     petsName.textContent = `Warning! ${petsName.textContent} is dying from being overfed!`
+        //     break
+        //     case 25:
+        //     petsName.textContent = `${petsName.textContent} is feeling stuffed!`
+        //     break
+        //     case 50:
+        //     petsName.textContent = `${petsName.textContent} has a full tummy and is content!`
+        //     break
+        //     case 80:
+        //     petsName.textContent = `${petsName.textContent} is feeling peckish!`
+        //     break
+        //     case 90:
+        //     petsName.textContent = `Warning! ${petsName.textContent} is dying from hunger!`
+        //     break
+        //     case 100:
+        //     petsName.textContent = `Oh No! ${petsName.textContent} has died from hunger! GAME OVER`
+        // }
+// }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 //class of "displayOnBeginUI", function that tells everything with that class to be set to block instead of none
 //monkeyImage.style.display = "block"
+
+
+// to do list ---------------------
+// 1 - dance function
+// add a new element to text display to user instead of replace, delete nth child first when timer executes
+// age var and timer
+// feed, play, clean functions and msgs
+// backgrounds
+// elements replace/hide
+// sprites
+// sprites react to happiness lvl
+
+//optional -------------------------
+// animated sprites
+// frame/border
+// sounds
+// more pets
+// pet can be trained, XP gained base +2, +1 for each stat above 50 or 75
+// training pet will allow them to learn new interactions
+// once age above certain time and pet is healthy, pet will be released and find a mate
+// -------------------------------------------------------
+
+
+// put pet consts into array and tell buttons to grab default stats from there?
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

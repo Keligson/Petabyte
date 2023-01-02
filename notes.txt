@@ -65,22 +65,26 @@ ChoosePetUI
 GameplayUI
 
 ---Element order---
+function? that sets PetNameUI, ChoosePetUI, GameplayUI = display.type = "none"
 
 
-BeginUI {
-    SHOW
-    Petabyte title
-    Begin button
+beginUI {
+    Petabyte title = "block"
+    Begin button = "block"
 }
 
 
 begin button clicked*
 
+beginButton click event {
+    beginUI = "none"
+    petNameingUI = "block"
+}
+    
 
-PetNameUI {
-    Petabyte title = hide
-    Begin button = hide
 
+
+petNameingUI {
     inputPetNameBox = SHOW
     submitPetNameButton = SHOW
     petsName = SHOW (delete this element all together and just have the name referenced in text msgs?)
@@ -91,7 +95,7 @@ pet name is entered*
 submitPetNameButton is clicked*
 
 
-ChoosePetUI {
+choosePetUI {
     inputPetNameBox = hide
     submitPetNameButton = hide
 
@@ -104,7 +108,7 @@ ChoosePetUI {
 monkey/rabbit button is clicked*
 
 
-GameplayUI {
+gameplayUI {
     monkeyButton = hide
     rabbitButton = hide
 
@@ -120,3 +124,25 @@ GameplayUI {
 
 
 
+// to do list ---------------------
+// 1 - dance function
+// add a new element to text display to user instead of replace, delete nth child first when timer executes
+// age var and timer
+// feed, play, clean functions and msgs
+// backgrounds
+// elements replace/hide
+// sprites
+// sprites react to happiness lvl
+
+//optional -------------------------
+// animated sprites
+// frame/border
+// sounds
+// more pets
+// pet can be trained, XP gained base +2, +1 for each stat above 50 or 75
+// training pet will allow them to learn new interactions
+// once age above certain time and pet is healthy, pet will be released and find a mate
+// -------------------------------------------------------
+
+
+// put pet consts into array and tell buttons to grab default stats from there?
