@@ -7,9 +7,12 @@ const inputPetNameBox = document.getElementById("inputPetNameBox")
 const submitPetNameButton = document.getElementById("submitPetNameButton")
 const petsName = document.getElementById("petsName")
 
-//----------------PET HUNGER LEVEL DISPLAY TEXT----------------
+//----------------PET LEVEL DISPLAY TEXTS----------------
 
 const hungerLevelDisplayText = document.getElementById("hungerLevelDisplayText")
+const thirstLevelDisplayText = document.getElementById("thirstLevelDisplayText")
+const cleanlinessLevelDisplayText = document.getElementById("cleanlinessLevelDisplayText")
+const happinessLevelDisplayText = document.getElementById("happinessLevelDisplayText")
 
 
 //------------------PET SELECTING BUTTONS----------------------
@@ -33,8 +36,11 @@ const playPauseTimerButton = document.getElementById("playPauseTimerButton")
 const progressBar = document.getElementById("progressBar")
 
 
-//------------------------FEED BUTTON--------------------------
+//---------------FEED, DRINK, SCRUB, PLAY BUTTONS--------------------------
 const feedButton = document.getElementById("feedButton")
+const drinkButton = document.getElementById("drinkButton")
+const scrubButton = document.getElementById("scrubButton")
+const playButton = document.getElementById("playButton")
 
 
 //----------------PET HEALTH LEVEL DISPLAY TEXT----------------
@@ -47,6 +53,53 @@ const healthLevelDisplayText = document.getElementById("healthLevelDisplayText")
 let gameOverRemovableElements = document.querySelectorAll(".gameOverRemovable")
 
 let petChosenRemovableElements = document.querySelectorAll(".petChosenRemovableElements")
+
+
+
+
+
+
+
+
+
+
+
+
+
+//----------------------HIDE UI TEST------------------------
+
+// const hideUIButton = document.getElementById("hideUIButton")
+
+// hideUIButton.addEventListener(`click`, () => {
+//   hideElements()
+// })
+
+// function hideElements() {
+  // Gets elements
+
+  // const elements = document.querySelectorAll(`.CLASSNAMEHERE`);
+
+  // Sets display of those elements
+
+//   elements.forEach(element => {
+//     element.style.display = 'none';
+//   });
+// }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -66,25 +119,6 @@ function updateHunger(newHunger) {
     hungerBar.style.backgroundColor = `red`
   }
 }
-
- 
-
-//----------------------createElementTestButton------------------------
-const createElementTestButton = document.getElementById(`createElementTestButton`)
-
-function createUI() {
-  const div = document.createElement('div')
-  div.setAttribute('id', 'my-div')
-  div.textContent = 'Hello, World!'
-  document.body.append(div)
-}
-
-createElementTestButton.addEventListener("click", () =>{
-  createUI()
-})
-
-
-
 
 
 
@@ -140,6 +174,15 @@ class CorePet {
 
         // DISPLAYS HUNGER LVL TO USER
         hungerLevelDisplayText.textContent = `${this.name}'s hunger level: ${this.hunger}/100%`
+
+        // DISPLAYS THIRST LVL TO USER
+        thirstLevelDisplayText.textContent = `${this.name}'s thirst level: ${this.thirst}/100%`
+
+        // DISPLAYS CLEANLINESS LVL TO USER
+        cleanlinessLevelDisplayText.textContent = `${this.name}'s cleanliness level: ${this.cleanliness}/100%`
+
+        // DISPLAYS HAPPINESS LVL TO USER
+        happinessLevelDisplayText.textContent = `${this.name}'s happiness level: ${this.happiness}/100%`
 
         // DISPLAYS HEALTH LVL TO USER
         healthLevelDisplayText.textContent = `${this.name}'s health level: ${this.health}/100%`
@@ -339,7 +382,7 @@ feedButton.addEventListener(`click`, () => {
 
     hungerLevelDisplayText.textContent = `${myMonkey.name}'s hunger level: ${myMonkey.hunger}/100%`
 
-    playerActionDisplayText.textContent = `You fed ${myMonkey.name}! (Hunger is increased by 5)`
+    playerActionDisplayText.textContent = `You fed ${myMonkey.name}! (-25 Hunger)`
 
     updateHunger(myMonkey.hunger)
   }
@@ -349,11 +392,157 @@ feedButton.addEventListener(`click`, () => {
 
     hungerLevelDisplayText.textContent = `${myRabbit.name}'s hunger level: ${myRabbit.hunger}/100%`
 
-    playerActionDisplayText.textContent = `You fed ${myRabbit.name}! (Hunger is increased by 5)`
+    playerActionDisplayText.textContent = `You fed ${myRabbit.name}! (-25 Hunger)`
 
     updateHunger(myRabbit.hunger)
   }
 })
+
+
+
+//-------------------DRINK BUTTON------------------
+drinkButton.addEventListener(`click`, () => {
+  //MONKEY
+  if (currentPet == `Monkey`) {
+    myMonkey.drink()
+
+    thirstLevelDisplayText.textContent = `${myMonkey.name}'s thirst level: ${myMonkey.thirst}/100%`
+
+    playerActionDisplayText.textContent = `You gave ${myMonkey.name} a drink! (-25 Thirst)`
+
+    //ref to progress bar
+    // updateThirst(myMonkey.thirst)
+  }
+  //RABBIT
+  else if (currentPet == `Rabbit`) {
+    myRabbit.drink()
+
+    thirstLevelDisplayText.textContent = `${myRabbit.name}'s thirst level: ${myRabbit.thirst}/100%`
+
+    playerActionDisplayText.textContent = `You gave ${myRabbit.name} a drink! (-25 Thirst)`
+
+    //ref to progress bar
+    // updateThirst(myRabbit.thirst)
+  }
+})
+
+
+
+
+//-------------------SCRUB BUTTON------------------
+scrubButton.addEventListener(`click`, () => {
+  //MONKEY
+  if (currentPet == `Monkey`) {
+    myMonkey.scrub()
+
+    cleanlinessLevelDisplayText.textContent = `${myMonkey.name}'s cleanliness level: ${myMonkey.cleanliness}/100%`
+
+    playerActionDisplayText.textContent = `You scrubbed ${myMonkey.name} all clean! (+100 Cleanliness)`
+
+    //ref to progress bar
+    // updateThirst(myMonkey.thirst)
+  }
+  //RABBIT
+  else if (currentPet == `Rabbit`) {
+    myRabbit.scrub()
+
+    cleanlinessLevelDisplayText.textContent = `${myRabbit.name}'s cleanliness level: ${myRabbit.cleanliness}/100%`
+
+    playerActionDisplayText.textContent = `You scrubbed ${myRabbit.name} all clean! (+100 Cleanliness)`
+
+    //ref to progress bar
+    // updateThirst(myRabbit.thirst)
+  }
+})
+
+
+
+//-------------------PLAY BUTTON------------------
+playButton.addEventListener(`click`, () => {
+  //MONKEY
+  if (currentPet == `Monkey`) {
+    myMonkey.play()
+
+    happinessLevelDisplayText.textContent = `${myMonkey.name}'s happiness level: ${myMonkey.happiness}/100%`
+
+    playerActionDisplayText.textContent = `You played with ${myMonkey.name}! (+25 Happiness)`
+
+    //ref to progress bar
+    // updateThirst(myMonkey.thirst)
+  }
+  //RABBIT
+  else if (currentPet == `Rabbit`) {
+    myRabbit.play()
+
+    happinessLevelDisplayText.textContent = `${myRabbit.name}'s happiness level: ${myRabbit.happiness}/100%`
+
+    playerActionDisplayText.textContent = `You played with ${myRabbit.name}! (+25 Happiness)`
+
+    //ref to progress bar
+    // updateThirst(myRabbit.thirst)
+  }
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//----------------------HIDE UI TEST------------------------
+
+// const hideUIButton = document.getElementById("hideUIButton")
+
+// hideUIButton.addEventListener(`click`, () => {
+//   hideElements()
+// })
+
+// function hideElements() {
+//   // Gets elements
+//   const elements = document.querySelectorAll(`.beginShow`);
+
+//   // Sets display of those elements
+//   elements.forEach(element => {
+//     element.style.display = 'none';
+//   });
+// }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -416,8 +605,8 @@ feedButton.addEventListener(`click`, () => {
 
 
 
-
-
+//class of "displayOnBeginUI", function that tells everything with that class to be set to block instead of none
+//monkeyImage.style.display = "block"
 
 
 // to do list ---------------------

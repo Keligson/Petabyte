@@ -57,3 +57,68 @@ pet will die after roughly 2 mins alone
 
 health
 start pet at 50% everything BUT health?
+
+
+
+
+BeginUI
+PetNameUI
+ChoosePetUI
+GameplayUI
+
+---Element order---
+
+
+BeginUI {
+    SHOW
+    Petabyte title
+    Begin button
+}
+
+
+begin button clicked*
+
+
+PetNameUI {
+    Petabyte title = hide
+    Begin button = hide
+
+    inputPetNameBox = SHOW
+    submitPetNameButton = SHOW
+    petsName = SHOW (delete this element all together and just have the name referenced in text msgs?)
+}
+
+
+pet name is entered*
+submitPetNameButton is clicked*
+
+
+ChoosePetUI {
+    inputPetNameBox = hide
+    submitPetNameButton = hide
+
+    monkeyButton = SHOW
+    rabbitButton = SHOW
+    dynamicImage = SHOW
+}
+
+
+monkey/rabbit button is clicked*
+
+
+GameplayUI {
+    monkeyButton = hide
+    rabbitButton = hide
+
+    feedButton = SHOW
+    hungerLevelDisplayText = SHOW
+    healthLevelDisplayText = SHOW
+    playerActionDisplayText = SHOW
+    playPauseTimerButton = SHOW
+    hungerBarPercentageDisplayText = SHOW
+    hunger-bar = SHOW
+}
+
+
+
+
