@@ -50,13 +50,11 @@ let petChosenRemovableElements = document.querySelectorAll(".petChosenRemovableE
 
 
 
-
-
 //------------------------PROGRESS BAR-----------------------
-const hungerBar = document.getElementById('hunger-bar');
+const hungerBar = document.getElementById('hunger-bar')
 
 function updateHunger(newHunger) {
-  hungerBar.style.width = `${newHunger}%`;
+  hungerBar.style.width = `${newHunger}%`
 
   if (newHunger <= 25) {
     hungerBar.style.backgroundColor = `yellow`
@@ -70,6 +68,24 @@ function updateHunger(newHunger) {
 }
 
  
+
+//----------------------createElementTestButton------------------------
+const createElementTestButton = document.getElementById(`createElementTestButton`)
+
+function createUI() {
+  const div = document.createElement('div')
+  div.setAttribute('id', 'my-div')
+  div.textContent = 'Hello, World!'
+  document.body.append(div)
+}
+
+createElementTestButton.addEventListener("click", () =>{
+  createUI()
+})
+
+
+
+
 
 
 //----------------------CORE PET CLASS------------------------
