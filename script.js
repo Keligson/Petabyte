@@ -135,19 +135,37 @@ class CorePet {
     }
 
     feed() {
+      //pros  
         this.hunger -= 25
+        this.happiness += 10
+      //cons
+        this.thirst += 10
+        this.cleanliness -= 10
     }
 
     drink() {
+      //pros
         this.thirst -= 25
+        this.happiness += 10
+      //cons
+        this.cleanliness -= 5
     }
 
     scrub() {
+        //pros
         this.cleanliness += 100
+        this.happiness += 10
+        //cons
+          // no con?
     }
 
     play() {
+        //pros
         this.happiness += 25
+        //cons
+        this.cleanliness -= 10
+        this.thirst += 10
+        this.hunger += 10
     }
 
     statsTick() {
@@ -382,7 +400,7 @@ feedButton.addEventListener(`click`, () => {
 
     hungerLevelDisplayText.textContent = `${myMonkey.name}'s hunger level: ${myMonkey.hunger}/100%`
 
-    playerActionDisplayText.textContent = `You fed ${myMonkey.name}! (-25 Hunger)`
+    playerActionDisplayText.textContent = `You fed ${myMonkey.name}! (-25 Hunger, +10 Happiness, +10 Thirst, -10 Cleanliness)`
 
     updateHunger(myMonkey.hunger)
   }
@@ -392,7 +410,7 @@ feedButton.addEventListener(`click`, () => {
 
     hungerLevelDisplayText.textContent = `${myRabbit.name}'s hunger level: ${myRabbit.hunger}/100%`
 
-    playerActionDisplayText.textContent = `You fed ${myRabbit.name}! (-25 Hunger)`
+    playerActionDisplayText.textContent = `You fed ${myRabbit.name}! (-25 Hunger, +10 Happiness, +10 Thirst, -10 Cleanliness)`
 
     updateHunger(myRabbit.hunger)
   }
@@ -408,7 +426,7 @@ drinkButton.addEventListener(`click`, () => {
 
     thirstLevelDisplayText.textContent = `${myMonkey.name}'s thirst level: ${myMonkey.thirst}/100%`
 
-    playerActionDisplayText.textContent = `You gave ${myMonkey.name} a drink! (-25 Thirst)`
+    playerActionDisplayText.textContent = `You gave ${myMonkey.name} a drink! (-25 Thirst, +10 Happiness, -5 Cleanliness)`
 
     //ref to progress bar
     // updateThirst(myMonkey.thirst)
@@ -419,7 +437,7 @@ drinkButton.addEventListener(`click`, () => {
 
     thirstLevelDisplayText.textContent = `${myRabbit.name}'s thirst level: ${myRabbit.thirst}/100%`
 
-    playerActionDisplayText.textContent = `You gave ${myRabbit.name} a drink! (-25 Thirst)`
+    playerActionDisplayText.textContent = `You gave ${myRabbit.name} a drink! (-25 Thirst, +10 Happiness, -5 Cleanliness)`
 
     //ref to progress bar
     // updateThirst(myRabbit.thirst)
@@ -437,7 +455,7 @@ scrubButton.addEventListener(`click`, () => {
 
     cleanlinessLevelDisplayText.textContent = `${myMonkey.name}'s cleanliness level: ${myMonkey.cleanliness}/100%`
 
-    playerActionDisplayText.textContent = `You scrubbed ${myMonkey.name} all clean! (+100 Cleanliness)`
+    playerActionDisplayText.textContent = `You scrubbed ${myMonkey.name} all clean! (+100 Cleanliness, +10 Happiness)`
 
     //ref to progress bar
     // updateThirst(myMonkey.thirst)
@@ -448,7 +466,7 @@ scrubButton.addEventListener(`click`, () => {
 
     cleanlinessLevelDisplayText.textContent = `${myRabbit.name}'s cleanliness level: ${myRabbit.cleanliness}/100%`
 
-    playerActionDisplayText.textContent = `You scrubbed ${myRabbit.name} all clean! (+100 Cleanliness)`
+    playerActionDisplayText.textContent = `You scrubbed ${myRabbit.name} all clean! (+100 Cleanliness, +10 Happiness)`
 
     //ref to progress bar
     // updateThirst(myRabbit.thirst)
@@ -465,7 +483,7 @@ playButton.addEventListener(`click`, () => {
 
     happinessLevelDisplayText.textContent = `${myMonkey.name}'s happiness level: ${myMonkey.happiness}/100%`
 
-    playerActionDisplayText.textContent = `You played with ${myMonkey.name}! (+25 Happiness)`
+    playerActionDisplayText.textContent = `You played with ${myMonkey.name}! (+25 Happiness, -10 Cleanliness, +10 Thirst, +10 Hunger)`
 
     //ref to progress bar
     // updateThirst(myMonkey.thirst)
@@ -476,7 +494,7 @@ playButton.addEventListener(`click`, () => {
 
     happinessLevelDisplayText.textContent = `${myRabbit.name}'s happiness level: ${myRabbit.happiness}/100%`
 
-    playerActionDisplayText.textContent = `You played with ${myRabbit.name}! (+25 Happiness)`
+    playerActionDisplayText.textContent = `You played with ${myRabbit.name}! (+25 Happiness, -10 Cleanliness, +10 Thirst, +10 Hunger)`
 
     //ref to progress bar
     // updateThirst(myRabbit.thirst)

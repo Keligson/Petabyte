@@ -6,41 +6,39 @@ health = 100
 
 
 
-feed
-    pro:
-        hunger -
-        happiness +
-        health +
-    con:
-        thirst +
-        clean -
+    feed() {
+      //pros  
+        this.hunger -= 25
+        this.happiness += 10
+      //cons
+        this.thirst += 10
+        this.cleanliness -= 10
+    }
 
+    drink() {
+      //pros
+        this.thirst -= 25
+        this.happiness += 10
+      //cons
+        this.cleanliness -= 5
+    }
 
-drink
-    pro:
-        thirst -
-        happiness +
-        health +      
-    con:
-        clean - (only small -)
+    scrub() {
+        //pros
+        this.cleanliness += 100
+        this.happiness += 10
+        //cons
+          // no con?
+    }
 
-
-clean
-    pro:
-        clean +
-        happiness +
-        health +
-    con:
-        no con?
-    
-play
-    pro:
-        happiness +
-        health +
-    con:
-        clean -
-        thirst +
-        hunger +
+    play() {
+        //pros
+        this.happiness += 25
+        //cons
+        this.cleanliness -= 10
+        this.thirst += 10
+        this.hunger += 10
+    }
 
 
 
