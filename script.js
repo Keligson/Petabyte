@@ -32,15 +32,54 @@ const playerActionDisplayText = document.getElementById("playerActionDisplayText
 const playPauseTimerButton = document.getElementById("playPauseTimerButton")
 
 
-//---------------------PROGRESS BAR TEST-----------------------
-const progressBar = document.getElementById("progressBar")
 
-
-//---------------FEED, DRINK, SCRUB, PLAY BUTTONS--------------------------
+//---------------FEED, DRINK, SCRUB, PLAY BUTTONS--------------
 const feedButton = document.getElementById("feedButton")
 const drinkButton = document.getElementById("drinkButton")
 const scrubButton = document.getElementById("scrubButton")
 const playButton = document.getElementById("playButton")
+
+
+
+
+
+//-------------------BEGIN BUTTON IMAGE TEST-------------------
+const beginButton = document.getElementById("beginButton")
+
+beginButton.addEventListener('mouseover', function() {
+  beginButton.src = `./Images/beginbuttonhover.png`
+})
+
+beginButton.addEventListener('mouseout', function() {
+  beginButton.src = `./Images/beginbutton.png`
+})
+
+
+beginButton.addEventListener(`click`, () => {
+  console.log(`This begins the game`)
+})
+
+
+
+
+
+
+
+
+
+
+//---------------------PROGRESS BAR TEST-----------------------
+const progressBar = document.getElementById("progressBar")
+
+
+
+
+
+
+
+
+
+
 
 
 //----------------PET HEALTH LEVEL DISPLAY TEXT----------------
@@ -49,12 +88,17 @@ const healthLevelDisplayText = document.getElementById("healthLevelDisplayText")
 
 
 
+
+
+
+
+
+
+
 //------------------------CLASS REMOVAL--------------------------
 let gameOverRemovableElements = document.querySelectorAll(".gameOverRemovable")
 
 let petChosenRemovableElements = document.querySelectorAll(".petChosenRemovableElements")
-
-
 
 
 
