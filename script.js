@@ -44,7 +44,9 @@ const healthLevelDisplayText = document.getElementById("healthLevelDisplayText")
 
 
 //------------------------CLASS REMOVAL--------------------------
-let gameOverRemovableElements = document.querySelectorAll("gameOverRemovable")
+let gameOverRemovableElements = document.querySelectorAll(".gameOverRemovable")
+
+let petChosenRemovableElements = document.querySelectorAll(".petChosenRemovableElements")
 
 
 
@@ -99,21 +101,16 @@ class CorePet {
     }
 
     statsTick() {
-        //CALLS DEATH CHECK FUNCTION
-        // what if I called death check before stats tick, by putting it before statsTick in the place it's called
-        // deathCheck()
-
         // APPLIES COST OF LIVING
-        this.hunger += 10
+        this.hunger += 0.5
         this.thirst += 0.5
         this.happiness -= 0.5
         this.cleanliness -= 0.5
 
         //CALLS HEALTH FUNCTION
         healthFucntion()
-
         
-
+        //TESTING LOG
         if (currentPet == `Monkey`) {
           console.log(`statsTick log:`, myMonkey)
         }
@@ -123,7 +120,7 @@ class CorePet {
 
         // UPDATES THE HUNGER BAR
         updateHunger(this.hunger)
-        console.log(`Hunger bar % log:`, hungerBar.style.width)
+        // console.log(`Hunger bar % log:`, hungerBar.style.width)
 
         // DISPLAYS HUNGER LVL TO USER
         hungerLevelDisplayText.textContent = `${this.name}'s hunger level: ${this.hunger}/100%`
@@ -145,10 +142,11 @@ let currentPet
 function healthFucntion() {
   if (currentPet == `Monkey`) {
     if (myMonkey.hunger > 49) {
-      myMonkey.health -= 10
+      myMonkey.health -= 1
       console.log(`Monkey Deg log: HP = ${myMonkey.health}`)
-    } else if (myMonkey.health < 100 && myMonkey.hunger < 49) {
-      myMonkey.health += 5
+    }
+    else if (myMonkey.health < 100 && myMonkey.hunger < 49) {
+      myMonkey.health += 1
       console.log(`Monkey Deg log: HP = ${myMonkey.health}`)
     }
   }
@@ -157,20 +155,16 @@ function healthFucntion() {
 
 //--------------------DEATH FUNCTION------------------------
 
-let isDead = false
-
 function deathCheck() {
   if (currentPet == `Monkey`) {
     if (myMonkey.health <= 0) {
-      isDead == true
+
+
       clearInterval(timerId)
       console.log(`Monkey Death log: HP = ${myMonkey.health}. ${myMonkey.name} DIED!`)
       dynamicImage.src = `./Images/gameovergif.gif`
-      // REMOVE ELEMENTS, ADD PLAY AGAIN
-      for (var i = 0; i < gameOverRemovableElements.length; i++) {
-        gameOverRemovableElements[i].remove();
-      }
-      //NOT WORKING
+      removeElementsIfPetDead()
+      //ADD PLAY AGAIN BUTTON
     }
     else {
       callTick()
@@ -178,6 +172,21 @@ function deathCheck() {
   }
 }
 
+
+
+//------------------ELEMENT REMOVERS-----------------------
+
+function removeElementsIfPetDead() {
+  for (let i = 0; i < gameOverRemovableElements.length; i++) {
+      gameOverRemovableElements[i].remove();
+    }
+}
+
+function removeElementsIfPetChosen() {
+  for (let i = 0; i < petChosenRemovableElements.length; i++) {
+    petChosenRemovableElements[i].remove();
+    }
+}
 
 
 
@@ -189,7 +198,7 @@ class MonkeyClass extends CorePet {
       dynamicImage.src = `./Images/monkeyimage.jpg`
       currentPet =`Monkey`
       this.dance = dance
-      // timerId = setInterval(callTick, 1000)
+
       timerId = setInterval(deathCheck, 1000)
       
       updateHunger(this.hunger)
@@ -214,16 +223,19 @@ class RabbitClass extends CorePet {
 }
 
 
+
+//---------------RABBIT BUTTON (CREATES RABBIT)---------------
+
 rabbitButton.addEventListener(`click`, () => {
   myRabbit = new RabbitClass(`${petsName.textContent}`, 0, 0, 100, 100, 100, `Rabbit`, `PEPEJAM`)
   console.log(myRabbit)
-  rabbitButton.remove()
-  monkeyButton.remove()
+  removeElementsIfPetChosen()
 })
 
 
 
 //----------------------PET NAME SYSTEM------------------------
+
 submitPetNameButton.addEventListener("click", () =>{
   petsName.textContent = inputPetNameBox.value;
   submitPetNameButton.remove()
@@ -232,13 +244,12 @@ submitPetNameButton.addEventListener("click", () =>{
 
 
 
-//---------------------MONKEY STUFF-----------------------
+//---------------MONKEY BUTTON (CREATES MONKEY)---------------
 
 monkeyButton.addEventListener(`click`, () => {
     myMonkey = new MonkeyClass(`${petsName.textContent}`, 0, 0, 100, 100, 100, `Monkey`, `PEPEJAM`)
     console.log(myMonkey)
-    rabbitButton.remove()
-    monkeyButton.remove()
+    removeElementsIfPetChosen()
 })
 
 
@@ -248,22 +259,24 @@ monkeyButton.addEventListener(`click`, () => {
 let timerId
 let isPaused = false
 
-
 function callTick() {
+  //MONKEY
   if (currentPet == `Monkey`) {
     myMonkey.statsTick()
-  } else if (currentPet == `Rabbit`) {
+  }
+  //RABBIT
+  else if (currentPet == `Rabbit`) {
     myRabbit.statsTick()
   }
 }
 
-
-// pause or resume the interval
+// Pause / Resume the interval
 function pauseResumeInterval() {
   if (isPaused) {
     timerId = setInterval(callTick, 1000)
     isPaused = false
-  } else {
+  }
+  else {
     clearInterval(timerId)
     isPaused = true
   }
@@ -271,26 +284,30 @@ function pauseResumeInterval() {
 
 playPauseTimerButton.addEventListener("click", () => {
     if (playPauseTimerButton.textContent == "PAUSE") {
-        console.log(`playPauseTimerButton log: ACTIVATING PLAY STATE`)
         dynamicImage.src = `./Images/gamepausedgif.gif`
-        playPauseTimerButton.textContent = "PLAY"
+
         // RESUMES interval
+        playPauseTimerButton.textContent = "PLAY"
         pauseResumeInterval()
+
         // replaces action text
         playerActionDisplayText.textContent = `ACTIAVTING PAUSED STATE`
     }
     else if (playPauseTimerButton.textContent == "PLAY") {
-        console.log(`playPauseTimerButton log: ACTIVATING PAUSE STATE`)
+        //MONKEY
         if (currentPet == `Monkey`) {
           dynamicImage.src = `./Images/monkeyimage.jpg`
         }
+        //RABBIT
         else if (currentPet == `Rabbit`) {
           dynamicImage.src = `./Images/rabbitimage.png`
         }
-        playPauseTimerButton.textContent = "PAUSE"
+
         // PAUSES interval
+        playPauseTimerButton.textContent = "PAUSE"
         pauseResumeInterval()
-        // replaces action text
+
+        // Replaces action text
         playerActionDisplayText.textContent = `ACTIVATING PLAY STATE`
     }
 })
@@ -300,29 +317,31 @@ playPauseTimerButton.addEventListener("click", () => {
 //-------------------FEED BUTTON------------------
 
 feedButton.addEventListener(`click`, () => {
+  //MONKEY
   if (currentPet == `Monkey`) {
     myMonkey.feed()
-  console.log(`Feed button log:`, myMonkey)
-  hungerLevelDisplayText.textContent = `${myMonkey.name}'s hunger level: ${myMonkey.hunger}/100%`
-  playerActionDisplayText.textContent = `You fed ${myMonkey.name}! (Hunger is increased by 5)`
-  updateHunger(myMonkey.hunger)
+
+    hungerLevelDisplayText.textContent = `${myMonkey.name}'s hunger level: ${myMonkey.hunger}/100%`
+
+    playerActionDisplayText.textContent = `You fed ${myMonkey.name}! (Hunger is increased by 5)`
+
+    updateHunger(myMonkey.hunger)
   }
+  //RABBIT
   else if (currentPet == `Rabbit`) {
     myRabbit.feed()
-    console.log(`Feed button log:`, myRabbit)
-  hungerLevelDisplayText.textContent = `${myRabbit.name}'s hunger level: ${myRabbit.hunger}/100%`
-  playerActionDisplayText.textContent = `You fed ${myRabbit.name}! (Hunger is increased by 5)`
-  updateHunger(myRabbit.hunger)
+
+    hungerLevelDisplayText.textContent = `${myRabbit.name}'s hunger level: ${myRabbit.hunger}/100%`
+
+    playerActionDisplayText.textContent = `You fed ${myRabbit.name}! (Hunger is increased by 5)`
+
+    updateHunger(myRabbit.hunger)
   }
 })
 
 
 
-//----------------------CHECK STATS-------------------------
-// const checkStats = () =>{
-//     if (myMonkey.hunger >= 50) {
-//         console.log(`${petsName.textContent} is content`)
-//     }
+
 
 
 
@@ -386,8 +405,7 @@ feedButton.addEventListener(`click`, () => {
 
 
 // to do list ---------------------
-// 1 - death state
-// 2 - dance function
+// 1 - dance function
 // add a new element to text display to user instead of replace, delete nth child first when timer executes
 // age var and timer
 // feed, play, clean functions and msgs
