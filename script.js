@@ -41,27 +41,50 @@ const playButton = document.getElementById("playButton")
 
 
 
-
-//-------------------BEGIN BUTTON IMAGE TEST-------------------
+//---------------BEGIN GAME UI (HOVER, CLICK, HIDE, SHOW)----------------
+//BUTTON
 const beginButton = document.getElementById("beginButton")
 
+
+//BUTTON MOUSEROVER / MOUSEOUT IMAGE SWAP
 beginButton.addEventListener('mouseover', function() {
   beginButton.src = `./Images/beginbuttonhover.png`
 })
-
 beginButton.addEventListener('mouseout', function() {
   beginButton.src = `./Images/beginbutton.png`
 })
 
+//CLICK EVENT, HIDES AND SHOWS ELEMENTS
 beginButton.addEventListener(`click`, () => {
-  console.log(`This begins the game`)
+  beginGameElements = document.querySelectorAll(`.beginUI`)
+  beginGameElements.forEach(beginGameElements => {
+    beginGameElements.style.display = 'none'
+  })
+  petNamingElements = document.querySelectorAll(`.petNamingUI`)
+  petNamingElements.forEach(petNamingElements => {
+    petNamingElements.style.display = 'block'
+  })
+})
+
+
+
+//-------------------PET NAMING UI (CLICK, HIDE, SHOW)-------------------
+//CLICK EVENT, HIDES AND SHOWS ELEMENTS
+submitPetNameButton.addEventListener(`click`, () => {
+  petNamingElements = document.querySelectorAll(`.petNamingUI`)
+  petNamingElements.forEach(petNamingElements => {
+    petNamingElements.style.display = 'none'
+  })
+  petSelectionElements = document.querySelectorAll(`.petSelectionUI`)
+  petSelectionElements.forEach(petSelectionElements => {
+    petSelectionElements.style.display = 'block'
+  })
 })
 
 
 
 
-
-
+submitPetNameButton
 
 
 
@@ -92,10 +115,17 @@ const healthLevelDisplayText = document.getElementById("healthLevelDisplayText")
 
 
 
-//------------------------CLASS REMOVAL--------------------------
-// let gameOverRemovableElements = document.querySelectorAll(".gameOverRemovable")
+//------------------------CLASS HIDERS--------------------------
+let gameOverRemovableElements = document.querySelectorAll(".gameOverRemovable")
 
-// let petChosenRemovableElements = document.querySelectorAll(".petChosenRemovableElements")
+let petChosenRemovableElements = document.querySelectorAll(".petChosenRemovableElements")
+
+
+
+
+
+
+// let  = document.querySelectorAll(".CLASS HERE")
 
 
 
@@ -108,7 +138,6 @@ const healthLevelDisplayText = document.getElementById("healthLevelDisplayText")
 
 
 //----------------------HIDE UI TEST------------------------
-
 // const hideUIButton = document.getElementById("hideUIButton")
 
 // hideUIButton.addEventListener(`click`, () => {
@@ -118,13 +147,13 @@ const healthLevelDisplayText = document.getElementById("healthLevelDisplayText")
 // function hideElements() {
   // Gets elements
 
-  // const elements = document.querySelectorAll(`.CLASSNAMEHERE`);
+  // const elements = document.querySelectorAll(`.CLASSNAMEHERE`)
 
   // Sets display of those elements
 
 //   elements.forEach(element => {
-//     element.style.display = 'none';
-//   });
+//     element.style.display = 'none'
+//   })
 // }
 
 
@@ -313,13 +342,13 @@ function deathCheck() {
 //------------------ELEMENT REMOVERS-----------------------
 function removeElementsIfPetDead() {
   for (let i = 0; i < gameOverRemovableElements.length; i++) {
-      gameOverRemovableElements[i].remove();
+      gameOverRemovableElements[i].style.display = `none`
     }
 }
 
 function removeElementsIfPetChosen() {
   for (let i = 0; i < petChosenRemovableElements.length; i++) {
-    petChosenRemovableElements[i].remove();
+    petChosenRemovableElements[i].style.display = `none`
     }
 }
 
@@ -369,9 +398,9 @@ rabbitButton.addEventListener(`click`, () => {
 
 //----------------------PET NAME SYSTEM------------------------
 submitPetNameButton.addEventListener("click", () =>{
-  petsName.textContent = inputPetNameBox.value;
-  submitPetNameButton.remove()
-  inputPetNameBox.remove()
+  petsName.textContent = inputPetNameBox.value
+  // submitPetNameButton.remove()
+  // inputPetNameBox.remove()
 })
 
 
@@ -587,12 +616,12 @@ playButton.addEventListener(`click`, () => {
 
 // function hideElements() {
 //   // Gets elements
-//   const elements = document.querySelectorAll(`.beginShow`);
+//   const elements = document.querySelectorAll(`.beginShow`)
 
 //   // Sets display of those elements
 //   elements.forEach(element => {
-//     element.style.display = 'none';
-//   });
+//     element.style.display = 'none'
+//   })
 // }
 
 

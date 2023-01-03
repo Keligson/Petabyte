@@ -124,11 +124,12 @@ gameplayUI {
 
 
 
+
+
 // to do list ---------------------
 // 1 - dance function
 // add a new element to text display to user instead of replace, delete nth child first when timer executes
 // age var and timer
-// feed, play, clean functions and msgs
 // backgrounds
 // elements replace/hide
 // sprites
@@ -146,3 +147,8 @@ gameplayUI {
 
 
 // put pet consts into array and tell buttons to grab default stats from there?
+
+
+
+
+Currently working on: hiding UI elements, see line 71 etc. Why are later elemtents hidden even though they don't have the hidden class from CSS?
