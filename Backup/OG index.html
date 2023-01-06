@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+<!--PET NAMING-->
+<div id="petNamingContainer" class="petNamingUI">
+    <div>
+        <input id="inputPetNameBox" type="text" placeholder="ENTER TEXT HERE">
+    </div>
+
+    <div>
+        <button id="submitPetNameButton">SUBMIT NAME BUTTON</button>
+    </div>
+</div>
+
+<div class="gameOverRemovable">
+    <p id="petsName">[PET NAME]</p>
+</div>
+
+
+<!--PET SELECTION BUTTONS-->
+<div id="petSelectionButtonsContainer">
+    <div>
+        <button id="monkeyButton" class="gameOverRemovable petChosenRemovableElements petSelectionUI">MONKEY BUTTON</button>
+    </div>
+
+    <div>
+        <button id="rabbitButton" class="gameOverRemovable petChosenRemovableElements petSelectionUI">RABBIT BUTTON</button>
+    </div>
+</div>
+
+
+<!--DYNAMIC IMAGE-->
+<div id="dynamicImageContainer" class="petSelectionUI">
+    <img id="dynamicImage" src="./Images/egg.png" alt="EGG IMAGE BY DEFAULT, BUT CHANGES IF TO MONKEY OR RABBIT IF THOSE PETS ARE SELECTED">
+</div>
+
+
+<!--TEXT TO DISPLAY TO USER AFTER THEIR ACTION-->
+<div id="playerActionDisplayTextContainer" class="gameOverRemovable">
+    <p id="playerActionDisplayText">[THE PLAYER'S ACTION GOES HERE]</p>
+</div>
+
+
+<!--FEED, DRINK, SCRUB, PLAY BUTTONS-->
+<div id="feedDrinkScrubPlayButtonContainer" class="gameOverRemovable">
+    <button id="feedButton">FEED BUTTON</button>
+    <button id="drinkButton">DRINK BUTTON</button>
+    <button id="scrubButton">SCRUB BUTTON</button>
+    <button id="playButton">PLAY BUTTON</button>
+</div>
+
+
+<!--PET LEVEL DISPLAY TEXTS-->
+<div id="petLevelDisplayTextsContainer" class="gameOverRemovable">
+    <p id="hungerLevelDisplayText">[HUNGER STAT]</p>
+    <p id="thirstLevelDisplayText">[THIRST STAT]</p>
+    <p id="cleanlinessLevelDisplayText">[CLEANLINESS STAT]</p>
+    <p id="happinessLevelDisplayText">[HAPPINESS STAT]</p>
+    <p id="healthLevelDisplayText">[HEALTH STAT]</p>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

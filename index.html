@@ -1,135 +1,80 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="style.css">
 </head>
-<body>
-
-    <!-- <div>
-        <img id="petHappinessImage" src="./Images/normalface.png" alt="">
-    </div> -->
 
 
-
-<!--TITLE AND BEGIN-->
-    <div id="titleAndBeginContainer" class="beginUI">
-        <img src="./Images/petabytetitle.png" alt="">
-        <img src="./Images/beginbutton.png" id="beginButton" alt="">
-        <!-- <button><img src="./Images/beginbutton.png" alt=""></button> -->
-    </div>
-
-
-
-<!--PET NAMING-->
-<div id="petNamingContainer" class="petNamingUI titleScreenUI">
-    <div>
-        <input id="inputPetNameBox" type="text" placeholder="ENTER TEXT HERE">
-    </div>
-
-    <div>
-        <button id="submitPetNameButton">SUBMIT NAME BUTTON</button>
-    </div>
-
-    <div>
-        <p id="petsName" class="gameOverRemovable">[PET NAME]</p>
-    </div>
-</div>
-
-
-
-<!--FEED, DRINK, SCRUB, PLAY BUTTONS-->
-<div id="feedDrinkScrubPlayButtonContainer" class="gameplayUI titleScreenUI">
-    <button id="feedButton" class="gameOverRemovable">FEED BUTTON</button>
-    <button id="drinkButton" class="gameOverRemovable">DRINK BUTTON</button>
-    <button id="scrubButton" class="gameOverRemovable">SCRUB BUTTON</button>
-    <button id="playButton" class="gameOverRemovable">PLAY BUTTON</button>
-</div>
-
-
-
-<!--PET LEVEL DISPLAY TEXTS-->
-<div id="petLevelDisplayTextsContainer" class="gameplayUI titleScreenUI">
-    <p id="hungerLevelDisplayText" class="gameOverRemovable">[HUNGER STAT]</p>
-    <p id="thirstLevelDisplayText" class="gameOverRemovable">[THIRST STAT]</p>
-    <p id="cleanlinessLevelDisplayText" class="gameOverRemovable">[CLEANLINESS STAT]</p>
-    <p id="happinessLevelDisplayText" class="gameOverRemovable">[HAPPINESS STAT]</p>
-    <p id="healthLevelDisplayText" class="gameOverRemovable">[HEALTH STAT]</p>
-</div>
-
-
-
-<!--TEXT TO DISPLAY TO USER AFTER THEIR ACTION-->
-<div id="playerActionDisplayTextContainer" class="titleScreenUI">
-    <p id="playerActionDisplayText" class="gameOverRemovable">[THE PLAYER'S ACTION GOES HERE]</p>
-</div>
-
-
-
-<!--PLAY/PAUSE BUTTON-->
-<div id="playPauseButtonContainer" class="titleScreenUI">
-    <button id="playPauseTimerButton" class="gameOverRemovable">PAUSE</button>
-<div>
-
-
-
-<!--PET SELECTION BUTTONS-->
-<div id="petSelectionButtonsContainer" class="petSelectionUI">
-    <div>
-        <button id="monkeyButton" class="gameOverRemovable petChosenRemovableElements">MONKEY BUTTON</button>
-    </div>
-
-    <div>
-        <button id="rabbitButton" class="gameOverRemovable petChosenRemovableElements">RABBIT BUTTON</button>
-    </div>
-</div>
+<body background="https://cdnb.artstation.com/p/assets/images/images/009/413/771/large/amiram-zocowitzky-fiverr-jungle-cartoon-logo-intro-anim-design-preview-002.jpg?1518855190">
     
 
+<!-- <img class="image" src="https://tinyurl.com/yreftasa" alt="A cute dog"> -->
+<!-- <img class="backgroundimage" src="https://static.vecteezy.com/system/resources/previews/000/600/996/non_2x/cartoon-jungle-background-vector.jpg" alt="the jungle"> -->
 
-<!--DYNAMIC IMAGE-->
-<div id="dynamicImageContainer" class="choosePetUI">
-    <img id="dynamicImage" src="./Images/egg.png" alt="">
+
+<div class ="container petSelectionUI">
+    <div  id="dynamicImageContainer" class="picture">
+        <img id="dynamicImage" src="./Images/egg.png" alt="EGG IMAGE BY DEFAULT, BUT CHANGES IF TO MONKEY OR RABBIT IF THOSE PETS ARE SELECTED">
+    </div>
+
+    <div class="naming">
+        <div>
+            <input id="inputPetNameBox" type="text" placeholder="ENTER TEXT HERE">
+        </div>
+    
+        <div>
+            <button id="submitPetNameButton" class="buttons">SUBMIT NAME BUTTON</button>
+        </div>
+
+        <div class="gameOverRemovable">
+            <p id="petsName">[PET NAME]</p>
+        </div>
+    </div>
+</div>
+
+
+<div id="petLevelDisplayTextsContainer" class="gameOverRemovable stats">
+    <ul>
+        <li id="hungerLevelDisplayText">[HUNGER STAT]</li>
+        <li id="thirstLevelDisplayText">[THIRST STAT]</li>
+        <li id="cleanlinessLevelDisplayText">[CLEANLINESS STAT]</li>
+        <li id="happinessLevelDisplayText">[HAPPINESS STAT]</li>
+        <li id="healthLevelDisplayText">[HEALTH STAT]</li>
+    </ul>
+</div>
+
+
+<div id="feedDrinkScrubPlayButtonContainer" class="buttonsone gameOverRemovable">
+    <div>
+        <button id="feedButton" class="buttons">FEED BUTTON</button>
+        <button id="drinkButton" class="buttons">DRINK BUTTON</button>
+        <button id="scrubButton" class="buttons">SCRUB BUTTON</button>
+        <button id="playButton" class="buttons">PLAY BUTTON</button>
+    </div>
+</div>
+
+
+<div id="petSelectionButtonsContainer" class="buttonsone gameOverRemovable">
+    <div>
+        <div>
+            <button id="monkeyButton" class="gameOverRemovable petChosenRemovableElements petSelectionUI buttons">MONKEY BUTTON</button>
+        </div>
+    
+        <div>
+            <button id="rabbitButton" class="gameOverRemovable petChosenRemovableElements petSelectionUI buttons">RABBIT BUTTON</button>
+        </div>
+    </div>
 </div>
 
 
 
-
-
-
-
-
-<!--PROGRESS BAR TEST-->
-
-<!-- <div>
-    <progress id="progressBar" value="0" max="200"></progress>
-</div> -->
-
-<div>
-    <p id="hungerBarPercentageDisplayText" class="gameOverRemovable">HUNGER: %</p>
-    <div id="hunger-bar" class="hunger-bar gameOverRemovable"></div>
+<div id="playerActionDisplayTextContainer" class="gameOverRemovable stats">
+    <p id="playerActionDisplayText">[THE PLAYER'S ACTION GOES HERE]</p>
 </div>
-
-
-
-
-
-
-
-
-<!--HIDE UI ELEMENTS TEST-->
-
-<!-- <div>
-    <button id="hideUIButton">BEGIN HIDE UI TEST BUTTON</button>
-</div> -->
-
-
-
 
 
 
 <script src="script.js"></script>
+
 </body>
 </html>
